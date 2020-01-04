@@ -14,21 +14,25 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import es.floppp.monumentaltreesgva.databinding.ActivityMainBinding;
 import es.floppp.monumentaltreesgva.extras.CustomCallback;
 import es.floppp.monumentaltreesgva.extras.K;
 import es.floppp.monumentaltreesgva.models.HttpRequest;
 import es.floppp.monumentaltreesgva.models.TreeDao;
 import es.floppp.monumentaltreesgva.models.TreeDatabase;
 import es.floppp.monumentaltreesgva.pojos.Tree;
+import es.floppp.monumentaltreesgva.ui.home.TreesAdapter;
 import es.floppp.monumentaltreesgva.viewmodels.TreeViewModel;
 
 
 public class MainActivity extends AppCompatActivity implements CustomCallback<Tree> {
 
-    private TreeViewModel mTreeViewModel;
+//    private TreeViewModel mTreeViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,16 +50,11 @@ public class MainActivity extends AppCompatActivity implements CustomCallback<Tr
 
         HttpRequest controller = new HttpRequest(this);
         controller.makeTreesRequest(K.Region.VALENCIA);
-
-        mTreeViewModel = new ViewModelProvider(this).get(TreeViewModel.class);
-        mTreeViewModel.getAllTrees().observe(this, trees -> {
-            Log.d("PRUEBAS", "En la DB hay " + trees.size() + " árboles.");
-        });
     }
 
     @Override
     public void callback(List<Tree> trees) {
-        Log.d("PRUEBAS", "Recibidos " + trees.size() + " árboles.");
+//        Log.d("PRUEBAS", "Recibidos " + trees.size() + " árboles.");
         trees.forEach(tree -> new Thread(() -> TreeDatabase.getDatabase(this).treeDao().insert(tree)).start());
 
     }

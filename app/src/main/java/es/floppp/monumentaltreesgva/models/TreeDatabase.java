@@ -27,7 +27,7 @@ public abstract class TreeDatabase extends RoomDatabase {
             super.onOpen(db);
 
             // TODO: Para pruebas, luego borrar
-            dbWriteExecutor.execute(() -> INSTANCE.treeDao().deleteAllTrees());
+//            dbWriteExecutor.execute(() -> INSTANCE.treeDao().deleteAllTrees());
         }
     };
 
