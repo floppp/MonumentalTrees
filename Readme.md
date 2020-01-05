@@ -1,15 +1,15 @@
-- [Main description](#org7be0ddb)
-  - [*TODO* list <code>[5/16]</code>](#org7c6ea4b)
+- [Main description](#orgf1976f9)
+  - [*TODO* list <code>[5/16]</code>](#orga5dc309)
 
 
-<a id="org7be0ddb"></a>
+<a id="orgf1976f9"></a>
 
 # Main description
 
-Project made as a home work for the subject "Android Programming Fundamentlals", part of the (Master de Desarrollo de Aplicaciones Móviles)[<http://mmoviles.upv.es>]. It works as a list/map with that shows trees that has been classified as monumental. The app has being developed in Java. I like Kotlin, but i want to refresh Java and, honestly, i feel building time for Java is shorter than for Kotlin.
+Project made as a home work for the subject "Android Programming Fundamentlals", part of the [Master de Desarrollo de Aplicaciones Móviles](<http://mmoviles.upv.es>). It works as a list/map with that shows trees that has been classified as monumental. The app has being developed in Java. I like Kotlin, but i want to refresh Java and, honestly, i feel building time for Java is shorter than for Kotlin.
 
 
-<a id="org7c6ea4b"></a>
+<a id="orga5dc309"></a>
 
 # *TODO* list <code>[5/16]</code>
 
