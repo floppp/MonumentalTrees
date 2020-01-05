@@ -19,6 +19,12 @@ public interface TreeDao {
     @Query("SELECT * from tree WHERE regionName=:region")
     LiveData<List<Tree>> getRegionTrees(String region);
 
+    @Query("SELECT COUNT(*) FROM tree WHERE regionName=:region")
+    int getNumberOfEntriesInRegion(String region);
+
+    @Query("SELECT COUNT(*) FROM tree")
+    int getNumberOfEntries();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Tree tree);
 

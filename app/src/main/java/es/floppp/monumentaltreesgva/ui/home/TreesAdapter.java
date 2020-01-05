@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.floppp.monumentaltreesgva.R;
-import es.floppp.monumentaltreesgva.databinding.TreeItemBinding;
 import es.floppp.monumentaltreesgva.pojos.Tree;
 
 public class TreesAdapter extends RecyclerView.Adapter<TreesAdapter.ViewHolder> {
@@ -43,7 +42,13 @@ public class TreesAdapter extends RecyclerView.Adapter<TreesAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (mTrees != null) {
             Tree current = this.mTrees.get(position);
-            holder.speciesTextView.setText(current.species);
+            Log.d("PRUEBAS", "[Adapter] onBindViewHolder");
+            holder.speciesTextView.setText(current.species.replaceAll("\"", ""));
+            holder.townTextView.setText(current.town.replaceAll("\"", ""));
+            holder.ageTextView.setText(current.age > 0 ? current.age + " años" : "edad desconocida");
+            holder.heightTextView.setText("altura: " + current.height + " m");
+            holder.diameterTextView.setText("diámetro: " + current.diameter + " m");
+            Log.d("PRUEBAS", "[Adapter] onBindViewHolder, " + holder.diameterTextView.getText());
         } else {
             holder.speciesTextView.setText("No Word");
         }
@@ -56,10 +61,18 @@ public class TreesAdapter extends RecyclerView.Adapter<TreesAdapter.ViewHolder> 
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView speciesTextView;
+        private final TextView townTextView;
+        private final TextView ageTextView;
+        private final TextView heightTextView;
+        private final TextView diameterTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.speciesTextView = itemView.findViewById(R.id.txv_species);
+            this.townTextView = itemView.findViewById(R.id.txv_town);
+            this.ageTextView = itemView.findViewById(R.id.txv_age);
+            this.heightTextView = itemView.findViewById(R.id.txv_height);
+            this.diameterTextView = itemView.findViewById(R.id.txv_diameter);
         }
     }
 }

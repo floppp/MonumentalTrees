@@ -21,18 +21,18 @@ public abstract class TreeDatabase extends RoomDatabase {
     private static volatile TreeDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;
 
-    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
-        @Override
-        public void onOpen(@NonNull SupportSQLiteDatabase db) {
-            super.onOpen(db);
-
-            // TODO: Para pruebas, luego borrar
-//            dbWriteExecutor.execute(() -> INSTANCE.treeDao().deleteAllTrees());
-        }
-    };
+//    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
+//        @Override
+//        public void onOpen(@NonNull SupportSQLiteDatabase db) {
+//            super.onOpen(db);
+//
+//            // TODO: Para pruebas, luego borrar
+//            executorService.execute(() -> INSTANCE.treeDao().deleteAllTrees());
+//        }
+//    };
 
     // Pool con los hilos disponibles para ejecutar acciones sobre/contra la base de datos.
-    public static final ExecutorService dbWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    public static final ExecutorService executorService = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public static TreeDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
@@ -42,7 +42,7 @@ public abstract class TreeDatabase extends RoomDatabase {
                             context.getApplicationContext(),
                             TreeDatabase.class,
                             "tree_database"
-                    ).addCallback(sRoomDatabaseCallback)
+                    )//.addCallback(sRoomDatabaseCallback)
                      .build();
                 }
             }

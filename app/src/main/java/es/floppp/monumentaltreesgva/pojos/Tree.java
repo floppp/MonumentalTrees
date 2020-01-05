@@ -1,14 +1,16 @@
 package es.floppp.monumentaltreesgva.pojos;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 
-@Entity(tableName = "tree")
+@Entity(tableName = "tree",
+        primaryKeys = {"id", "regionName"})
 public class Tree {
-    @PrimaryKey public final int id;
-    @ColumnInfo(name = "regionName") public String regionName;
+    public final int id;
+    @NonNull public final String regionName;
     public final String town;
     public final int inventary;
     public final String species;

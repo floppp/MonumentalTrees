@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import es.floppp.monumentaltreesgva.extras.CustomCallback;
 import es.floppp.monumentaltreesgva.extras.Deserializer;
@@ -22,11 +23,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class HttpRequest implements Callback<JsonObject> {
 
     private String mEndPoint;
-    private CustomCallback mCallback;
+    private CustomCallback<Tree> mCallback;
 
-    public HttpRequest(CustomCallback callback) {
+    public HttpRequest(CustomCallback<Tree> callback) {
         this.mCallback = callback;
     }
+
     public void makeTreesRequest(K.Region endPoint) {
         this.mEndPoint = K.END_POINTS.get(endPoint);
         Retrofit retrofit = new Retrofit.Builder()
@@ -39,23 +41,25 @@ public class HttpRequest implements Callback<JsonObject> {
         call.enqueue(this);
     }
 
-
     @Override
     public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
         List<Tree> trees = new ArrayList<>();
         Deserializer deserializer = new Deserializer();
         if(response.isSuccessful()) {
-            response.body()
-                    .getAsJsonArray(this.mEndPoint)
-                    .forEach((json) -> trees.add(deserializer.jsonToTree(json, this.mEndPoint)));
+            if (response.body() != null) {
+                response.body()
+                        .getAsJsonArray(this.mEndPoint)
+                        .forEach((json) -> trees.add(deserializer.jsonToTree(json, this.mEndPoint)));
+            }
             this.mCallback.callback(trees);
         } else {
+            assert response.errorBody() != null;
             Log.d("PRUEBAS", response.errorBody().toString());
         }
     }
 
     @Override
     public void onFailure(Call<JsonObject> call, Throwable t) {
-        Log.d("PRUEBAS", t.getLocalizedMessage());
+        Log.d("PRUEBAS", Objects.requireNonNull(t.getLocalizedMessage()));
     }
 }
