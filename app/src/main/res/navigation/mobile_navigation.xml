@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="es.floppp.monumentaltreesgva.ui.list.ListFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_navigation_home_to_detailsFragment"
+            app:destination="@id/navigation_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +26,9 @@
         android:name="es.floppp.monumentaltreesgva.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_details"
+        android:name="es.floppp.monumentaltreesgva.ui.details.DetailsFragment"
+        android:label="@string/title_details"
+        tools:layout="@layout/fragment_details" />
 </navigation>

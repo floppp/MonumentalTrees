@@ -1,15 +1,16 @@
 package es.floppp.monumentaltreesgva.viewmodels;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import es.floppp.monumentaltreesgva.extras.K;
+import es.floppp.monumentaltreesgva.extras.SingleLiveEvent;
+import es.floppp.monumentaltreesgva.pojos.Tree;
 
-public class RegionViewModel extends ViewModel {
+public class UserSelectionsViewModel extends ViewModel {
     private MutableLiveData<K.Region> message = new MutableLiveData<>();
+    private SingleLiveEvent<Tree> treeMessage =  new SingleLiveEvent<>();
 
     public LiveData<K.Region> regionChanged() {
         return this.message;
@@ -19,7 +20,7 @@ public class RegionViewModel extends ViewModel {
     // y obtener el string que elegimos, pero nos puede dar problemas (supongo,
     // no he comprobado) por internacionalización, así que mejor ir a lo seguro
     // y usar el índice del spinner.
-    public void post(int n) {
+    public void postRegion(int n) {
         K.Region selectedRegion = K.Region.VALENCIA;
         switch (n) {
             case 1:
@@ -33,5 +34,13 @@ public class RegionViewModel extends ViewModel {
         }
 
         this.message.setValue(selectedRegion);
+    }
+
+    public void postTree(Tree tree) {
+        this.treeMessage.setValue(tree);
+    }
+
+    public LiveData<Tree> treeSelected() {
+        return this.treeMessage;
     }
 }

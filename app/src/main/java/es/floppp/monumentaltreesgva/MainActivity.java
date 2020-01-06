@@ -5,21 +5,28 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import es.floppp.monumentaltreesgva.databinding.ActivityMainBinding;
-import es.floppp.monumentaltreesgva.viewmodels.RegionViewModel;
+import es.floppp.monumentaltreesgva.extras.K;
+import es.floppp.monumentaltreesgva.viewmodels.UserSelectionsViewModel;
 
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
-    RegionViewModel mRegionVm;
+    UserSelectionsViewModel mRegionVm;
+    NavController mNavController;
+    AppBarConfiguration mAppBarConfiguration;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,24 +36,42 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(this.binding.toolbar);
 
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_home,
                 R.id.navigation_dashboard,
                 R.id.navigation_notifications
         ).build();
 
-        this.mRegionVm = new ViewModelProvider(this).get(RegionViewModel.class);
-        this.mRegionVm.post(0); // iniciamos con Valencia.
+        this.mRegionVm = new ViewModelProvider(this).get(UserSelectionsViewModel.class);
+        this.mRegionVm.postRegion(K.Region.VALENCIA.ordinal());
 
-        this.setUpNavigation(appBarConfiguration);
+        this.setUpNavigation(mAppBarConfiguration);
         this.spinnerSetUp();
     }
 
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        this.mNavController.navigateUp();
+
+        return true;
+    }
+
     private void setUpNavigation(AppBarConfiguration appBarConfiguration) {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(this.binding.navView, navController);
+        this.mNavController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, mNavController, appBarConfiguration);
+        NavigationUI.setupWithNavController(this.binding.navView, mNavController);
+
+        this.mNavController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            int id = destination.getId();
+            if (id != R.id.navigation_dashboard && id != R.id.navigation_home && id != R.id.navigation_notifications) {
+                this.binding.navView.setVisibility(View.GONE);
+                this.binding.spinner.setVisibility(View.GONE);
+            } else {
+                this.binding.navView.setVisibility(View.VISIBLE);
+                this.binding.spinner.setVisibility(View.VISIBLE);
+            }
+        });
 
         // He intentado compartir el view model entre fragments a partir del grafo
         // de navegación, no lo he conseguido, he sido incapaz de recuperar de los
@@ -65,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         this.binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                MainActivity.this.mRegionVm.post(i);
+                MainActivity.this.mRegionVm.postRegion(i);
             }
 
             @Override

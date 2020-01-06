@@ -10,25 +10,31 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.List;
+import java.util.Objects;
 
+import es.floppp.monumentaltreesgva.R;
 import es.floppp.monumentaltreesgva.databinding.FragmentListBinding;
 import es.floppp.monumentaltreesgva.pojos.Tree;
-import es.floppp.monumentaltreesgva.viewmodels.RegionViewModel;
-import es.floppp.monumentaltreesgva.viewmodels.TreeViewModel;
+import es.floppp.monumentaltreesgva.viewmodels.TreesViewModel;
+import es.floppp.monumentaltreesgva.viewmodels.UserSelectionsViewModel;
 
 public class ListFragment extends Fragment {
     FragmentListBinding binding;
-    TreeViewModel mTreeViewModel;
+    TreesViewModel mTreeViewModel;
+    UserSelectionsViewModel mUserSelectionViewModel;
     LiveData<List<Tree>> mLastLiveData;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
         this.binding = FragmentListBinding.inflate(inflater);
+
+        this.mTreeViewModel = new ViewModelProvider(Objects.requireNonNull(getActivity())).get(TreesViewModel.class);
+        this.mUserSelectionViewModel = new ViewModelProvider(getActivity()).get(UserSelectionsViewModel.class);
 
         return binding.getRoot();
     }
@@ -43,30 +49,27 @@ public class ListFragment extends Fragment {
 //        TreeViewModel treeViewModel =
 //                new ViewModelProvider(childNavController.getViewModelStoreOwner(R.navigation.mobile_navigation)).get(TreeViewModel.class);
 
-        TreesAdapter adapter = new TreesAdapter();
+
+        TreesAdapter adapter = new TreesAdapter(tree -> {
+            this.mUserSelectionViewModel.postTree(tree);
+            Navigation.findNavController(Objects.requireNonNull(getView())).navigate(R.id.navigation_details);
+        });
+
         this.binding.rcvTrees.setAdapter(adapter);
         this.binding.rcvTrees.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-        mTreeViewModel = new ViewModelProvider(getActivity()).get(TreeViewModel.class);
 
-        new ViewModelProvider(getActivity())
-                .get(RegionViewModel.class)
-                .regionChanged()
+        mUserSelectionViewModel.regionChanged()
                 .observe(
                         getViewLifecycleOwner(),
                         region -> {
                             Log.d("HOME_FRAGMENT", "Región recibida es " + region.toString());
                             ListFragment.this.binding.listProgressCircular.setVisibility(View.VISIBLE);
 
-                            // Eliminarmos observers y así evitamos que la primera petición chafe a la segunda,
-                            // cosa que ocurre cuando el repository usa red al no haber cacheado en sqllite.
                             if (this.mLastLiveData != null) {
                                 this.mLastLiveData.removeObservers(getViewLifecycleOwner());
                             }
 
-                            // TODO: con cada cambio hacemos una subscipción, habría que cambiarlo.
-                            //  He hecho un profiling y la memoria no aumenta, a pesar de cambiar más de 20 veinte
-                            //  veces de provincia. Pero no me gusta mucho, así que creo hay que cambiarlo.
                             this.mLastLiveData = mTreeViewModel.getRegionTrees(region);
                             this.mLastLiveData.observe(
                                     getViewLifecycleOwner(),

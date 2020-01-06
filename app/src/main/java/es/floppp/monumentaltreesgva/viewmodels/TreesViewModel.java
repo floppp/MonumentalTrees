@@ -16,11 +16,11 @@ import es.floppp.monumentaltreesgva.pojos.Tree;
 import es.floppp.monumentaltreesgva.usecases.TreesRepository;
 
 
-public class TreeViewModel extends AndroidViewModel {
+public class TreesViewModel extends AndroidViewModel {
     private TreesRepository mRepository;
     private LiveData<List<Tree>> mTrees;
 
-    public TreeViewModel(@NonNull Application application) {
+    public TreesViewModel(@NonNull Application application) {
         super(application);
         TreeDatabase db = TreeDatabase.getDatabase(application);
 
@@ -41,8 +41,5 @@ public class TreeViewModel extends AndroidViewModel {
 
     public LiveData<List<Tree>> getRegionTrees(K.Region region) {
         return mRepository.getRegionTrees(region);
-    }
-    public LiveData<List<Tree>> getAllTrees() {
-        return mTrees;
     }
 }

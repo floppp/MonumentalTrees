@@ -8,4 +8,5 @@
     <string name="val">València</string>
     <string name="ali">Alacant</string>
     <string name="cas">Castelló</string>
+    <string name="title_details">Detalls</string>
 </resources>
