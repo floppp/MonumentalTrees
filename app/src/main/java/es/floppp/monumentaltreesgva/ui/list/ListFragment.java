@@ -16,19 +16,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.List;
 
-import es.floppp.monumentaltreesgva.databinding.FragmentHomeBinding;
+import es.floppp.monumentaltreesgva.databinding.FragmentListBinding;
 import es.floppp.monumentaltreesgva.pojos.Tree;
 import es.floppp.monumentaltreesgva.viewmodels.RegionViewModel;
 import es.floppp.monumentaltreesgva.viewmodels.TreeViewModel;
 
 public class ListFragment extends Fragment {
-    FragmentHomeBinding binding;
+    FragmentListBinding binding;
     TreeViewModel mTreeViewModel;
     LiveData<List<Tree>> mLastLiveData;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        this.binding = FragmentHomeBinding.inflate(inflater);
+        this.binding = FragmentListBinding.inflate(inflater);
 
         return binding.getRoot();
     }

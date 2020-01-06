@@ -9,13 +9,13 @@
         android:id="@+id/navigation_home"
         android:name="es.floppp.monumentaltreesgva.ui.list.ListFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_list" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="es.floppp.monumentaltreesgva.ui.map.MapFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_map" />
 
     <fragment
         android:id="@+id/navigation_notifications"

@@ -20,17 +20,17 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import es.floppp.monumentaltreesgva.R;
-import es.floppp.monumentaltreesgva.databinding.FragmentDashboardBinding;
+import es.floppp.monumentaltreesgva.databinding.FragmentMapBinding;
 
 public class MapFragment extends Fragment {
 
-    private FragmentDashboardBinding binding;
+    private FragmentMapBinding binding;
     private static final int FINE_LOCATION_PERMISSION_REQUEST = 1;
     private SupportMapFragment mapFragment;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
             ViewGroup container, Bundle savedInstanceState) {
-        this.binding = FragmentDashboardBinding.inflate(inflater);
+        this.binding = FragmentMapBinding.inflate(inflater);
         if (mapFragment == null) {
             mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
             mapFragment.getMapAsync(new OnMapReadyCallback() {
