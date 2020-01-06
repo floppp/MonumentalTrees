@@ -17,7 +17,7 @@ The original source is [this GVA webpage](http://www.agroambient.gva.es/document
 + [X] Progress indicator when loading data
 + [X] Observers cancellations between requests
 + [X] Click on CardView to show details
-+ [X] Screen adjusting in detail fragment (navigation bar and title)
++ [X] Screen adjusted in detail fragment (navigation bar and title)
 + [ ] Map with all trees and our position
 + [ ] Landscape design
 + [ ] Some user options
@@ -41,7 +41,5 @@ The original source is [this GVA webpage](http://www.agroambient.gva.es/document
 
 
 *** References
-**** Kotlin codelabs, chapter seven about recycler views.
-[Google Android Kotlin Codelabs](https://codelabs.developers.google.com/android-kotlin-fundamentals/)
-
-**** [Android Room with a View](https://codelabs.developers.google.com/codelabs/android-room-with-a-view/#0),
++ [Google Android Kotlin Codelabs](https://codelabs.developers.google.com/android-kotlin-fundamentals/)
++ [Android Room with a View](https://codelabs.developers.google.com/codelabs/android-room-with-a-view/#0),
