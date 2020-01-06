@@ -21,7 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:minHeight="@dimen/card_min_height">
+        android:minHeight="@dimen/card_min_height"
+        >
 
         <TextView
             android:id="@+id/txv_species"

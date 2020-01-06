@@ -15,46 +15,34 @@ import java.util.List;
 import es.floppp.monumentaltreesgva.R;
 import es.floppp.monumentaltreesgva.pojos.Tree;
 
-public class TreesAdapter extends RecyclerView.Adapter<TreesAdapter.ViewHolder> {
+public class TreesAdapter extends RecyclerView.Adapter<ViewHolder> {
 
-    private LayoutInflater mInflater;
     private List<Tree> mTrees;
 
-    public TreesAdapter(Context context) {
-//        this.binding = TreeItemBinding.inflate(LayoutInflater.from(context));
-        this.mInflater = LayoutInflater.from(context);
+    public TreesAdapter() {
         this.mTrees = new ArrayList<>();
     }
 
-    public void setTrees(List<Tree> trees){
+    public void setTrees(List<Tree> trees) {
         this.mTrees = trees;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = this.mInflater.inflate(R.layout.tree_item, parent, false);
-        return new ViewHolder(itemView);
+        return ViewHolder.from(parent);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if (mTrees != null) {
-            Tree current = this.mTrees.get(position);
-            holder.speciesTextView.setText(current.species.replaceAll("\"", ""));
-            holder.townTextView.setText(current.town.replaceAll("\"", ""));
-            holder.ageTextView.setText(current.age > 0 ? current.age + " años" : "edad desconocida");
-            holder.heightTextView.setText("altura: " + current.height + " m");
-            holder.diameterTextView.setText("diámetro: " + current.diameter + " m");
-        } else {
-            holder.speciesTextView.setText("No Word");
-        }
+        holder.bind(this.mTrees.get(position));
     }
 
     @Override
     public int getItemCount() {
         return this.mTrees.size();
     }
+}
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private final TextView speciesTextView;
@@ -63,7 +51,7 @@ public class TreesAdapter extends RecyclerView.Adapter<TreesAdapter.ViewHolder> 
         private final TextView heightTextView;
         private final TextView diameterTextView;
 
-        public ViewHolder(@NonNull View itemView) {
+        private ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.speciesTextView = itemView.findViewById(R.id.txv_species);
             this.townTextView = itemView.findViewById(R.id.txv_town);
@@ -71,5 +59,20 @@ public class TreesAdapter extends RecyclerView.Adapter<TreesAdapter.ViewHolder> 
             this.heightTextView = itemView.findViewById(R.id.txv_height);
             this.diameterTextView = itemView.findViewById(R.id.txv_diameter);
         }
+
+        void bind(Tree tree) {
+            this.speciesTextView.setText(tree.species.replaceAll("\"", ""));
+            this.townTextView.setText(tree.town.replaceAll("\"", ""));
+            this.ageTextView.setText(tree.age > 0 ? tree.age + " años" : "edad desconocida");
+            this.heightTextView.setText("altura: " + tree.height + " m");
+            this.diameterTextView.setText("diámetro: " + tree.diameter + " m");
+        }
+
+        public static ViewHolder from(ViewGroup parent) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.tree_item, parent, false);
+
+            return new ViewHolder(view);
+        }
     }
-}
+

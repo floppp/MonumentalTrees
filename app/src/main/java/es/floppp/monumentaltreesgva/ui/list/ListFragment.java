@@ -43,7 +43,7 @@ public class ListFragment extends Fragment {
 //        TreeViewModel treeViewModel =
 //                new ViewModelProvider(childNavController.getViewModelStoreOwner(R.navigation.mobile_navigation)).get(TreeViewModel.class);
 
-        TreesAdapter adapter = new TreesAdapter(this.getContext());
+        TreesAdapter adapter = new TreesAdapter();
         this.binding.rcvTrees.setAdapter(adapter);
         this.binding.rcvTrees.setLayoutManager(new LinearLayoutManager(this.getContext()));
 

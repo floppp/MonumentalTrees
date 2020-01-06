@@ -24,3 +24,15 @@ The app has being developed in Java. I like Kotlin, but i want to refresh Java a
 + [ ] Distances request to Google API
 + [ ] Favorite and visited lists
 + [ ] Adding photos and more info (thing about it) to the selected tree, in the detail screen
+
+
+** Android features used
++ DiffCallback (ListAdapter instead of Adapter), but for this app, it has worst performance.
++ View Binding
++ 
+
+** References
+**** Kotlin codelabs, chapter seven about recycler views. In them a /modern/ way of connecting and interact with recycler views items is explained.
+[Google Android Kotlin Codelabs](https://codelabs.developers.google.com/android-kotlin-fundamentals/)
+
+**** 
