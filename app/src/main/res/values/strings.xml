@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Monumental Trees GVA</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">List</string>
+    <string name="title_dashboard">Map</string>
+    <string name="title_notifications">Configuration</string>
+
+    <string name="val">Valencia</string>
+    <string name="ali">Alicante</string>
+    <string name="cas">Castellón</string>
 </resources>

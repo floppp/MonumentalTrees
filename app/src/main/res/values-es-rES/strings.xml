@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Árboles Monumentales GVA</string>
+    <string name="title_home">Listado</string>
+    <string name="title_dashboard">Mapa</string>
+    <string name="title_notifications">Configuración</string>
+
+    <string name="val">Valencia</string>
+    <string name="ali">Alicante</string>
+    <string name="cas">Castellón</string>
+</resources>

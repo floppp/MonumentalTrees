@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="es.floppp.monumentaltreesgva.ui.home.HomeFragment"
+        android:name="es.floppp.monumentaltreesgva.ui.list.ListFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="es.floppp.monumentaltreesgva.ui.dashboard.MapFragment"
+        android:name="es.floppp.monumentaltreesgva.ui.map.MapFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 

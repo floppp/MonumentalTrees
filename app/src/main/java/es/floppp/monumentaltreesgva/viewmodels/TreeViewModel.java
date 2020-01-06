@@ -3,15 +3,13 @@ package es.floppp.monumentaltreesgva.viewmodels;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-import es.floppp.monumentaltreesgva.MainActivity;
 import es.floppp.monumentaltreesgva.extras.CustomCallback;
+import es.floppp.monumentaltreesgva.extras.K;
 import es.floppp.monumentaltreesgva.models.HttpRequest;
 import es.floppp.monumentaltreesgva.models.TreeDatabase;
 import es.floppp.monumentaltreesgva.pojos.Tree;
@@ -41,6 +39,9 @@ public class TreeViewModel extends AndroidViewModel {
         mTrees = mRepository.getAllTrees();
     }
 
+    public LiveData<List<Tree>> getRegionTrees(K.Region region) {
+        return mRepository.getRegionTrees(region);
+    }
     public LiveData<List<Tree>> getAllTrees() {
         return mTrees;
     }

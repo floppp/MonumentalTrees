@@ -1,7 +1,6 @@
-package es.floppp.monumentaltreesgva.ui.home;
+package es.floppp.monumentaltreesgva.ui.list;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,13 +41,11 @@ public class TreesAdapter extends RecyclerView.Adapter<TreesAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (mTrees != null) {
             Tree current = this.mTrees.get(position);
-            Log.d("PRUEBAS", "[Adapter] onBindViewHolder");
             holder.speciesTextView.setText(current.species.replaceAll("\"", ""));
             holder.townTextView.setText(current.town.replaceAll("\"", ""));
             holder.ageTextView.setText(current.age > 0 ? current.age + " años" : "edad desconocida");
             holder.heightTextView.setText("altura: " + current.height + " m");
             holder.diameterTextView.setText("diámetro: " + current.diameter + " m");
-            Log.d("PRUEBAS", "[Adapter] onBindViewHolder, " + holder.diameterTextView.getText());
         } else {
             holder.speciesTextView.setText("No Word");
         }

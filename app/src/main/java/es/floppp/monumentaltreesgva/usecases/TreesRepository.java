@@ -1,15 +1,11 @@
 package es.floppp.monumentaltreesgva.usecases;
 
-import android.content.Context;
 import android.util.Log;
 
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-import es.floppp.monumentaltreesgva.extras.CustomCallback;
 import es.floppp.monumentaltreesgva.extras.K;
 import es.floppp.monumentaltreesgva.models.HttpRequest;
 import es.floppp.monumentaltreesgva.models.TreeDao;
@@ -28,8 +24,12 @@ public class TreesRepository {
 
     public LiveData<List<Tree>> getAllTrees() {
         this.checkDbCache();
-        Log.d("REPOSITORY", "llamamos a getAllTrees");
         return this.mTreeDao.getAllTrees();
+    }
+
+    public LiveData<List<Tree>> getRegionTrees(K.Region region) {
+        this.checkDbCache(region);
+        return this.mTreeDao.getRegionTrees(K.END_POINTS.get(region));
     }
 
     public void insert(Tree word) {
@@ -43,6 +43,17 @@ public class TreesRepository {
                 this.mWebService.makeTreesRequest(K.Region.VALENCIA);
             } else {
                 Log.d("REPOSITORY", "Obtenemos árboles de base de datos");
+            }
+        });
+    }
+
+    private void checkDbCache(K.Region region) {
+        TreeDatabase.executorService.execute(() -> {
+            if (this.mTreeDao.getNumberOfEntriesInRegion(K.END_POINTS.get(region)) == 0) {
+                Log.d("REPOSITORY", "Hacemos nueva petición para " + region);
+                this.mWebService.makeTreesRequest(region);
+            } else {
+                Log.d("REPOSITORY", "Obtenemos árboles de base de datos de " + region);
             }
         });
     }
