@@ -5,7 +5,7 @@ The app has being developed in Java. I like Kotlin, but i want to refresh Java a
 It uses the MVVM pattern. My first time, a lot of chances it is wrongly implemented.
 The original source is [this GVA webpage](http://www.agroambient.gva.es/documents/20551003/163052224/Cataleg+10+de+octubre+de+2016/e0cf7d60-9ac4-4b48-bcc9-2082856308a2). From this pdf, a /GoogleSheet/ has been created, and with [Sheety](https://sheety.co/), the same /GoogleDrive/ acts like a REST server, feeded from the GoogleSheet.
 
-*** /TODO/ list [11/21]
+*** /TODO/ list [12/26]
 
 + [X] Retrofit for network
 + [X] Room for caching/storing info
@@ -18,6 +18,7 @@ The original source is [this GVA webpage](http://www.agroambient.gva.es/document
 + [X] Observers cancellations between requests
 + [X] Click on CardView to show details
 + [X] Screen adjusted in detail fragment (navigation bar and title)
++ [X] UTM to lat/lng
 + [ ] Map with all trees and our position
 + [ ] Landscape design
 + [ ] Some user options
@@ -28,7 +29,10 @@ The original source is [this GVA webpage](http://www.agroambient.gva.es/document
 + [ ] Distances request to Google API
 + [ ] Favorite and visited lists
 + [ ] Adding photos and more info (thing about it) to the selected tree, in the detail screen
++ [ ] Unique(s) view models in graphs, shared between elements
 + [ ] Sending data using graph
++ [ ] Center extraction with /reduce/
++ [ ] Zoom level depending on /edge/ rectangle
 
 
 *** Android features used in the project
@@ -42,4 +46,6 @@ The original source is [this GVA webpage](http://www.agroambient.gva.es/document
 
 *** References
 + [Google Android Kotlin Codelabs](https://codelabs.developers.google.com/android-kotlin-fundamentals/)
-+ [Android Room with a View](https://codelabs.developers.google.com/codelabs/android-room-with-a-view/#0),
++ [Android Room with a View](https://codelabs.developers.google.com/codelabs/android-room-with-a-view/#0)
++ [Repository to helper classesto UTM -> WGS84](https://github.com/rolfrander/geo)
+

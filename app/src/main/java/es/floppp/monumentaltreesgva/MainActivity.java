@@ -1,18 +1,13 @@
 package es.floppp.monumentaltreesgva;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -72,11 +67,6 @@ public class MainActivity extends AppCompatActivity {
                 this.binding.spinner.setVisibility(View.VISIBLE);
             }
         });
-
-        // He intentado compartir el view model entre fragments a partir del grafo
-        // de navegación, no lo he conseguido, he sido incapaz de recuperar de los
-        // fragments (el nav_host_fragment) en ellos.
-//        this.mTreeVM = new ViewModelProvider(navController.getViewModelStoreOwner(R.id.mobile_navigation)).get(TreeViewModel.class);
     }
 
     private void spinnerSetUp() {

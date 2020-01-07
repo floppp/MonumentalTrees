@@ -42,13 +42,6 @@ public class ListFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        // Esto es lo que me da problemas a la hora de intentar compartir el view model entre
-        // activity y los fragment hijos.
-//        NavHostFragment childHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.nav_host_fragment);
-//        NavController childNavController = childHostFragment.getNavController();
-//        TreeViewModel treeViewModel =
-//                new ViewModelProvider(childNavController.getViewModelStoreOwner(R.navigation.mobile_navigation)).get(TreeViewModel.class);
-
 
         TreesAdapter adapter = new TreesAdapter(tree -> {
             this.mUserSelectionViewModel.postTree(tree);

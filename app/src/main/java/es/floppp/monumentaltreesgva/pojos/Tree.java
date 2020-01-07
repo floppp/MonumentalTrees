@@ -12,8 +12,10 @@ public class Tree {
     public final String town;
     public final int inventary;
     public final String species;
-    public final int x;
-    public final int y;
+//    public final int x;
+//    public final int y;
+    public final double lat;
+    public final double lon;
     public final int age;
     public final float height;
     public final float perimeter;
@@ -26,8 +28,10 @@ public class Tree {
                 String town,
                 int inventary,
                 String species,
-                int x,
-                int y,
+//                int x,
+//                int y,
+                double lat,
+                double lon,
                 int age,
                 float height,
                 float perimeter,
@@ -38,8 +42,8 @@ public class Tree {
         this.town = town;
         this.inventary = inventary;
         this.species = species;
-        this.x = x;
-        this.y = y;
+        this.lat = lat;
+        this.lon = lon;
         this.age = age;
         this.height = height;
         this.perimeter = perimeter;

@@ -11,38 +11,40 @@ public class Deserializer {
 
     public Tree jsonToTree(JsonElement element, String region) {
         this.mObject = element.getAsJsonObject();
+
+        WGS84 wgs = new WGS84(new UTM(30, 'N', getSafeInt("x"), getSafeInt("y")));
         return new Tree(
-                getSafeInt(element, "id"),
+                getSafeInt("id"),
                 region,
                 this.mObject.get("municipio").toString(),
-                getSafeInt(element, "noInventario"),
+                getSafeInt("noInventario"),
                 this.mObject.get("especie").toString(),
-                getSafeInt(element, "x"),
-                getSafeInt(element, "y"),
-                getSafeInt(element, "edad"),
-                getSafeFloat(element, "altura"),
-                getSafeFloat(element, "perímetro"),
-                getSafeFloat(element, "diamCopa"),
-                getSafeFloat(element, "entornoProtección")
+                wgs.getLatitude(),
+                wgs.getLongitude(),
+                getSafeInt("edad"),
+                getSafeFloat("altura"),
+                getSafeFloat("perímetro"),
+                getSafeFloat("diamCopa"),
+                getSafeFloat("entornoProtección")
         );
     }
 
-    private float getSafeFloat(JsonElement el, String key) {
-        float value = -1;
+    private float getSafeFloat(String key) {
+        float value = 0;
         try {
             value = Float.parseFloat(this.mObject.get(key).toString());
-        } catch (Exception ex) {
+        } catch (Exception ignored) {
 
         }
 
         return value;
     }
 
-    private int getSafeInt(JsonElement el, String key) {
-        int value = -1;
+    private int getSafeInt(String key) {
+        int value = 0;
         try {
             value = Integer.parseInt(this.mObject.get(key).toString());
-        } catch (Exception ex) {
+        } catch (Exception ignored) {
 
         }
 

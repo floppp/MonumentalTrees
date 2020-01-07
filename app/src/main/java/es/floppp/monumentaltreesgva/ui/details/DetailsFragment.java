@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import java.util.Objects;
 
-import es.floppp.monumentaltreesgva.databinding.ActivityMainBinding;
 import es.floppp.monumentaltreesgva.databinding.FragmentDetailsBinding;
 import es.floppp.monumentaltreesgva.viewmodels.UserSelectionsViewModel;
 
