@@ -8,4 +8,14 @@
     <string name="val">Valencia</string>
     <string name="ali">Alicante</string>
     <string name="cas">Castellón</string>
+    <string name="title_tree_features">Dimensions</string>
+    <string name="height_preffix">Height</string>
+    <string name="diameter_preffix">Diameter</string>
+    <string name="perimeter_preffix">Perimeter</string>
+    <string name="age_preffix">Age</string>
+    <string name="unkown_suffix">unknown</string>
+    <string name="years">years</string>
+    <string name="extra_info_btn">More Info</string>
+    <string name="region">Default Region</string>
+    <string name="region_summary">Region we want to show as default</string>
 </resources>

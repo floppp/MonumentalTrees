@@ -1,9 +1,11 @@
 package es.floppp.monumentaltreesgva;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -11,6 +13,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.preference.PreferenceManager;
 
 import es.floppp.monumentaltreesgva.databinding.ActivityMainBinding;
 import es.floppp.monumentaltreesgva.extras.K;
@@ -38,12 +41,16 @@ public class MainActivity extends AppCompatActivity {
         ).build();
 
         this.mRegionVm = new ViewModelProvider(this).get(UserSelectionsViewModel.class);
-        this.mRegionVm.postRegion(K.Region.VALENCIA.ordinal());
 
         this.setUpNavigation(mAppBarConfiguration);
         this.spinnerSetUp();
     }
 
+    private int getDefaultRegion() {
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+
+        return Integer.parseInt(pref.getString("default_region", "0"));
+    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -62,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
             if (id != R.id.navigation_dashboard && id != R.id.navigation_home && id != R.id.navigation_notifications) {
                 this.binding.navView.setVisibility(View.GONE);
                 this.binding.spinner.setVisibility(View.GONE);
+            } else if (id == R.id.navigation_notifications) {
+                this.binding.spinner.setVisibility(View.GONE);
             } else {
                 this.binding.navView.setVisibility(View.VISIBLE);
                 this.binding.spinner.setVisibility(View.VISIBLE);
@@ -77,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         );
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         this.binding.spinner.setAdapter(adapter);
+        this.binding.spinner.setSelection(this.getDefaultRegion());
         this.binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

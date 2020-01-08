@@ -1,5 +1,7 @@
 package es.floppp.monumentaltreesgva.viewmodels;
 
+import android.widget.Toast;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -21,8 +23,11 @@ public class UserSelectionsViewModel extends ViewModel {
     // no he comprobado) por internacionalización, así que mejor ir a lo seguro
     // y usar el índice del spinner.
     public void postRegion(int n) {
-        K.Region selectedRegion = K.Region.VALENCIA;
+        K.Region selectedRegion = null;
         switch (n) {
+            case 0:
+                selectedRegion = K.Region.VALENCIA;
+                break;
             case 1:
                 selectedRegion = K.Region.ALICANTE;
                 break;

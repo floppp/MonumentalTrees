@@ -49,8 +49,7 @@ public class ListFragment extends Fragment {
         });
 
         this.binding.rcvTrees.setAdapter(adapter);
-        this.binding.rcvTrees.setLayoutManager(new LinearLayoutManager(this.getContext()));
-
+//        this.binding.rcvTrees.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         mUserSelectionViewModel.regionChanged()
                 .observe(

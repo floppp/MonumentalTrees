@@ -19,11 +19,15 @@
         android:id="@+id/navigation_dashboard"
         android:name="es.floppp.monumentaltreesgva.ui.map.MapFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_navigation_details"
+            app:destination="@id/navigation_details" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="es.floppp.monumentaltreesgva.ui.notifications.NotificationsFragment"
+        android:name="es.floppp.monumentaltreesgva.ui.preferences.PreferencesFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment

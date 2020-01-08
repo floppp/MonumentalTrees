@@ -9,4 +9,14 @@
     <string name="ali">Alicante</string>
     <string name="cas">Castellón</string>
     <string name="title_details">Detalles</string>
+    <string name="title_tree_features">Características Físicas</string>
+    <string name="height_preffix">Altura</string>
+    <string name="diameter_preffix">Diámetro</string>
+    <string name="perimeter_preffix">Perímetro</string>
+    <string name="age_preffix">Edad</string>
+    <string name="unkown_suffix">desconocido</string>
+    <string name="years">años</string>
+    <string name="extra_info_btn">Saber más</string>
+    <string name="region">Provincia por Defecto</string>
+    <string name="region_summary">Provincia que queremos que se cargue de inicio por defecto</string>
 </resources>

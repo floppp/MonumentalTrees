@@ -56,7 +56,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/height_preffix"
-        android:textAlignment="textStart"
+        android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/txv_height"
@@ -71,7 +71,7 @@
         android:layout_marginTop="16dp"
         android:textAlignment="textStart"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txv_perimeter_title"
         app:layout_constraintStart_toEndOf="@+id/txv_height_title"
         app:layout_constraintTop_toBottomOf="@+id/txv_phy_title" />
 
@@ -82,24 +82,23 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/perimeter_preffix"
-        android:textAlignment="textStart"
+        android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/txv_perimeter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txv_height" />
+        app:layout_constraintStart_toEndOf="@+id/txv_height"
+        app:layout_constraintTop_toBottomOf="@+id/txv_phy_title" />
 
     <TextView
         android:id="@+id/txv_perimeter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:textAlignment="textStart"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txv_perimeter_title"
-        app:layout_constraintTop_toBottomOf="@+id/txv_height" />
+        app:layout_constraintTop_toTopOf="@+id/txv_perimeter_title" />
 
     <TextView
         android:id="@+id/txv_diameter_title"
@@ -108,7 +107,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/diameter_preffix"
-        android:textAlignment="textStart"
+        android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/txv_diameter"
@@ -123,7 +122,7 @@
         android:layout_marginTop="16dp"
         android:textAlignment="textStart"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txv_age_title"
         app:layout_constraintStart_toEndOf="@+id/txv_diameter_title"
         app:layout_constraintTop_toBottomOf="@+id/txv_perimeter" />
 
@@ -132,14 +131,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="@string/age_preffix"
-        android:textAlignment="textStart"
+        android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/txv_age"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txv_diameter" />
+        app:layout_constraintStart_toEndOf="@+id/txv_diameter"
+        app:layout_constraintTop_toTopOf="@+id/txv_diameter" />
 
 
     <TextView
@@ -147,19 +145,18 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:textAlignment="textStart"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/txv_age_title"
-        app:layout_constraintTop_toBottomOf="@+id/txv_diameter" />
+        app:layout_constraintTop_toTopOf="@+id/txv_age_title" />
 
     <Button
         android:id="@+id/info_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:backgroundTint="#FFAF2C2C"
+        android:backgroundTint="#AF2C2C"
         android:text="@string/extra_info_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

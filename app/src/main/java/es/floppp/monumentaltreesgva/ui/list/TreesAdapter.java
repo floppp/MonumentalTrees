@@ -63,8 +63,8 @@ class ViewHolder extends RecyclerView.ViewHolder {
     }
 
     void bind(Tree tree, ItemClickListener<Tree> listener) {
-        this.speciesTextView.setText(tree.species.replaceAll("\"", ""));
-        this.townTextView.setText(tree.town.replaceAll("\"", ""));
+        this.speciesTextView.setText(tree.species);
+        this.townTextView.setText(tree.town);
         this.ageTextView.setText(tree.age > 0 ? tree.age + " años" : "edad desconocida");
         this.heightTextView.setText("altura: " + tree.height + " m");
         this.diameterTextView.setText("diámetro: " + tree.diameter + " m");

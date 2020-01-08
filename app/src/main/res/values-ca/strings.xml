@@ -9,4 +9,14 @@
     <string name="ali">Alacant</string>
     <string name="cas">Castelló</string>
     <string name="title_details">Detalls</string>
+    <string name="title_tree_features">Característiques Físiques</string>
+    <string name="height_preffix">Alçada</string>
+    <string name="diameter_preffix">Diàmetre</string>
+    <string name="perimeter_preffix">Perímetre</string>
+    <string name="age_preffix">Edat</string>
+    <string name="unkown_suffix">desconegut</string>
+    <string name="years">anys</string>
+    <string name="extra_info_btn">Saber més</string>
+    <string name="region">Província per Defecte</string>
+    <string name="region_summary">Província que volem que es mostri de sortida</string>
 </resources>

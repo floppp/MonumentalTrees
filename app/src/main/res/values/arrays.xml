@@ -5,4 +5,11 @@
         <item>@string/ali</item>
         <item>@string/cas</item>
     </string-array>
+
+    <string-array name="regions_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
 </resources>

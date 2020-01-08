@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/AppTheme_textblack"
+    android:key="main_preferences">
+
+    <ListPreference
+        android:layout="@layout/list_preference_layout"
+        android:defaultValue="0"
+        android:entries="@array/regions"
+        android:entryValues="@array/regions_values"
+        android:key="default_region"
+        android:summary="@string/region_summary"
+        android:theme="@style/AppTheme_textblack"
+        android:title="@string/region" />
+</androidx.preference.PreferenceScreen>
